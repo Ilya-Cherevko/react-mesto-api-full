@@ -24,11 +24,11 @@ app.use(helmet());
 
 app.use(requestLogger);
 
-// app.get('/crash-test', () => {
-//  setTimeout(() => {
-//    throw new Error('Сервер сейчас упадёт');
-//  }, 0);
-// });
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(bodyParser.json()); // для собирания JSON-формата
 app.use(bodyParser.urlencoded({ extended: true })); // для приёма веб-страниц внутри POST-запроса
