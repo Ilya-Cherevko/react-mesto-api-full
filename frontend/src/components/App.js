@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import {Route, Switch, useHistory} from "react-router-dom";
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import Header from "./Header";
 import Main from "./Main";
@@ -52,17 +52,21 @@ function App() {
   // ID Карточки
   const [cardId, setCardId] = useState('')
 
+  // Token
+  const [token, setToken] = useState('')
+ 
   // Запрос данных пользователя и карточек с сервера
   useEffect(() => {
     if (isLoggedIn) {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
+    Promise.all([api.getUserInfo(token), api.getInitialCards(token)])
     .then(([user, cards]) => {
       setCurrentUser(user)
       setCards(cards)
+      setUserEmail(user.email)
       })
       .catch(err => console.log("Не удалось загрузить страницу:", err))
     }
-  }, [isLoggedIn])
+  }, [isLoggedIn, token])
 
   // Вход по токену при загрузке страницы
   useEffect(() => {
@@ -117,7 +121,7 @@ function App() {
   function handleUpdateUser(data) {
     setIsLoadingButton(true)
 
-    api.editUserInfo(data)
+    api.editUserInfo(data, token)
       .then(res => {
         setCurrentUser(res)
         closeAllPopups()
@@ -130,7 +134,7 @@ function App() {
   function handleUpdateAvatar(data) {
     setIsLoadingButton(true)
 
-    api.editUserAvatar(data)
+    api.editUserAvatar(data, token)
       .then(res => {
         setCurrentUser(res)
         closeAllPopups()
@@ -143,7 +147,7 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
-    api.changeLikeCardStatus(card._id, !isLiked)
+    api.changeLikeCardStatus(card._id, !isLiked, token)
       .then(newCard => {
         setCards(state => state.map(c => c._id === card._id ? newCard : c));
       })
@@ -154,9 +158,10 @@ function App() {
   function handleCardDelete() {
     setIsLoadingButton(true)
     
-    api.deleteCard(cardId)
+    api.deleteCard(cardId, token)
       .then(() => {
         setCards(cards.filter(c => c._id !== cardId))
+        setCardId(' ')
         closeAllPopups()
       })
       .catch(err => console.log("Не удалось удалить карточку:", err))
@@ -167,7 +172,7 @@ function App() {
   function handleAddPlaceSubmit(data) {
     setIsLoadingButton(true)
 
-    api.addCard(data)
+    api.addCard(data, token)
       .then(newCard => {
         setCards([newCard, ...cards]);
         closeAllPopups()
@@ -188,10 +193,10 @@ function App() {
         .catch(err => {
             console.log(err)
             setIsSuccessfully(false)
+            handleConfirmRegisterClick()
         })
         .finally(() => {
           setIsLoadingButton(false)
-          handleConfirmRegisterClick()
         })
   }
 
@@ -201,9 +206,9 @@ function App() {
 
     auth.signIn({password, email})
        .then(res => {
-            setIsLoggedIn(true)
-            setUserEmail(email)
             localStorage.setItem('jwt', JSON.stringify(res.token))
+            setToken(res.token)
+            setIsLoggedIn(true)
             history.push('/')
         })
         .catch(err => {
@@ -218,6 +223,9 @@ function handleSignOutProfile() {
   setIsLoggedIn(false)
   localStorage.removeItem('jwt')
   setUserEmail("Your email")
+  setCurrentUser({})
+  setCards([])
+  setToken('')
   history.push('/sign-in')
 }
 
@@ -226,10 +234,10 @@ function handleSignInProfileToken() {
   if (localStorage.getItem('jwt')) {
       const token = JSON.parse(localStorage.getItem('jwt'))
 
-      auth.getUserInfo(token)
-          .then(res => {
+      auth.checkToken(token)
+          .then(() => {
+              setToken(token)
               setIsLoggedIn(true)
-              setUserEmail(res.data.email)
               history.push('/')
           })
           .catch(e => {

@@ -1,11 +1,12 @@
-const BASE_URL = 'https://auth.nomoreparties.co';
+import { optionsApi } from './optionsApi'
+
+// const BASE_URL = 'https://auth.nomoreparties.co';
+// const BASE_URL = 'api.Ilya-cherevko.student.nomoredomains.xyz';
 
 export const signUp = ({password, email}) => {
-    return fetch(BASE_URL + '/signup', {
+    return fetch(optionsApi.baseUrl + '/signup', {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: optionsApi.headers,
         body: JSON.stringify({
             password,
             email
@@ -23,11 +24,9 @@ export const signUp = ({password, email}) => {
 }
 
 export const signIn = ({password, email}) => {
-    return fetch(BASE_URL + '/signin', {
+    return fetch(optionsApi.baseUrl + '/signin', {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: optionsApi.headers,
         body: JSON.stringify({
             password,
             email
@@ -46,11 +45,11 @@ export const signIn = ({password, email}) => {
         })
 }
 
-export const getUserInfo = (token) => {
-    return fetch(BASE_URL + '/users/me', {
+export const checkToken = (token) => {
+    return fetch(optionsApi.baseUrl + '/users/me', {
         method: "GET",
         headers: {
-            'Content-Type': 'application/json',
+            ...optionsApi.headers,
             "Authorization" : `Bearer ${token}`
         }
     })
