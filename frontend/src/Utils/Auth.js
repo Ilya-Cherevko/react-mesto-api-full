@@ -1,7 +1,7 @@
 import { optionsApi } from './optionsApi'
 
 // const BASE_URL = 'https://auth.nomoreparties.co';
-// const BASE_URL = 'api.Ilya-cherevko.student.nomoredomains.xyz';
+// const BASE_URL = 'http://api.Ilya-cherevko.student.nomoredomains.xyz';
 
 export const signUp = ({password, email}) => {
     return fetch(optionsApi.baseUrl + '/signup', {

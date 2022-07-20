@@ -71,7 +71,7 @@ function App() {
   // Вход по токену при загрузке страницы
   useEffect(() => {
     handleSignInProfileToken()
-  }, [])
+  }, [handleSignInProfileToken])
 
   // Управление состоянием попапов (открытие)
   function handleEditAvatarClick() {
