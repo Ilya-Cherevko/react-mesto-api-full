@@ -1,5 +1,5 @@
 export const optionsApi = {
-    baseUrl: 'http://api.ilya-cherevko.student.nomoredomains.xyz',
+    baseUrl: 'https://api.ilya-cherevko.student.nomoredomains.xyz',
     headers: {
         'Content-Type': 'application/json'
     }
