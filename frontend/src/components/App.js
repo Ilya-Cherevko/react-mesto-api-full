@@ -54,13 +54,11 @@ function App() {
 
   // Token
   const [token, setToken] = useState('')
-  console.log(token) //проверим токен
  
   // Запрос данных пользователя и карточек с сервера
   useEffect(() => {
     if (isLoggedIn) {
     Promise.all([api.getUserInfo(token), api.getInitialCards(token)])
-    console.log(token) //проверим есть ли токен
     .then(([user, cards]) => {
       setCurrentUser(user)
       setCards(cards)
