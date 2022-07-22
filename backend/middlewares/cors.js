@@ -1,10 +1,8 @@
 const allowedCors = [
-  'ilya-cherevko.students.nomorepartiesxyz.ru',
-  'api.ilya-cherevko.student.nomoredomains.xyz',
   'http://ilya-cherevko.students.nomorepartiesxyz.ru',
-  'http://api.ilya-cherevko.student.nomoredomains.xyz',
+  'http://api.Ilya-cherevko.student.nomoredomains.xyz',
   'https://ilya-cherevko.students.nomorepartiesxyz.ru',
-  'https://api.ilya-cherevko.student.nomoredomains.xyz',
+  'https://api.Ilya-cherevko.student.nomoredomains.xyz',
   'http://localhost:3000',
 ];
 

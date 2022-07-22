@@ -1,7 +1,6 @@
 import Popup from "./Popup"
 
-function ImagePopup({ card, onClose }) {
-    
+function ImagePopup({card, onClose}) {
     return (
         <Popup 
             onClose={onClose}

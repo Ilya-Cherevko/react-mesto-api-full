@@ -1,7 +1,8 @@
 import PopupWithForm from "./PopupWithForm"
 import Popup from "./Popup"
 
-function ConfirmDeletePopup({ loader, isOpen, onClose, onDelete }) {
+function ConfirmDeletePopup(props) {
+    const { loader, isOpen, onClose, onDelete } = props
 
     function handleSubmit(evt) {
         evt.preventDefault()

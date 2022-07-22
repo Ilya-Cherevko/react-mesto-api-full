@@ -2,8 +2,9 @@ import { useRef, useEffect } from "react"
 import PopupWithForm from "./PopupWithForm"
 import Popup from "./Popup"
 
-function EditAvatarPopup({ loader, isOpen, onClose, onUpdateAvatar }) {
-    
+function EditAvatarPopup(props) {
+    const { loader, isOpen, onClose, onUpdateAvatar } = props
+
     const avatarLink = useRef()
 
     function handleSubmit(evt) {

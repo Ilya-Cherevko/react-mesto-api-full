@@ -1,11 +1,11 @@
-import { useContext } from 'react';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { useContext } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Card({ card, onCardClick, onCardLike, onCardDelete }) {
-
+function Card(props) {
+    const { card, onCardClick, onCardLike, onCardDelete } = props
     const currentUser = useContext(CurrentUserContext)
     const isOwn = card.owner === currentUser._id;
-    const isLiked = card.likes.some(i => i._id === currentUser._id)
+    const isLiked = card.likes.some(i => i === currentUser._id)
 
     const cardDeleteButtonClassName = (
         `element__trash 
@@ -65,4 +65,3 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
 }
 
 export default Card
-

@@ -1,26 +1,26 @@
-import { useEffect, useRef } from 'react'
+import {useEffect, useRef} from 'react'
 
-function Popup({ children, onClose, isOpen }) {
-    
+function Popup({children, onClose, isOpen}) {
     const popup = useRef()
 
     useEffect(() => {
-        function handleEscKey(e) {
-            const isKeyEsc = e.key === 'Escape'
-            isKeyEsc && onClose()
+        function handkeKeyEsc(e) {
+            const isKyeEsc = e.key === 'Escape'
+            isKyeEsc && onClose()
         }
 
-        function handleClickOverlay(e) {
-            const isOverlay = e.target === e.currentTarget
-            isOverlay && onClose()
+        function handleClickOverflay(e) {
+            const isOverflay = e.target === e.currentTarget
+            isOverflay && onClose()
         }
-
-        document.addEventListener('keydown', handleEscKey)
-        popup.current.addEventListener('mousedown', handleClickOverlay)
+        const popupCarrent = popup.current
+        
+        document.addEventListener('keydown', handkeKeyEsc)
+        popupCarrent.addEventListener('mousedown', handleClickOverflay)
 
         return () => {
-            document.removeEventListener('keydown', handleEscKey)
-            popup.current.removeEventListener('mousedown', handleClickOverlay)
+            document.removeEventListener('keydown', handkeKeyEsc)
+            popupCarrent.removeEventListener('mousedown', handleClickOverflay)
         }
     })
 

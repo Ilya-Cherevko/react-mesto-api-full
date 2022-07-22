@@ -1,11 +1,10 @@
-import { useContext } from "react"
+import {useContext} from "react"
 import Card from "./Card"
-import { CurrentUserContext } from "../contexts/CurrentUserContext"
+import {CurrentUserContext} from "../contexts/CurrentUserContext"
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards, onCardLike, onCardDelete }) {
+function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards, onCardLike, onCardDelete}) {
+    const currentUser = useContext(CurrentUserContext)
 
-  const currentUser = useContext(CurrentUserContext)
-  
     return (
         <main className="main">
           <section className="profile">
@@ -55,7 +54,6 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, cards, onC
 
         </main>
     )
-
 }
 
 export default Main

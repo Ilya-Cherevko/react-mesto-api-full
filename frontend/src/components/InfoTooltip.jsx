@@ -1,7 +1,7 @@
 import Popup from "./Popup";
 
+
 function InfoTooltip({isOpen, onClose, isSuccessfully}) {
-    
     return (
         <Popup
             isOpen={isOpen}
