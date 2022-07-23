@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "scp -r ./build/* titanikum@51.250.95.241:/home/titanikum/frontend"
+    "deploy": "npm run build && scp -r ./build/* titanikum@51.250.95.241:/home/titanikum/frontend"
   },
   "eslintConfig": {
     "extends": [

@@ -1,7 +1,7 @@
 {
   "name": "react-mesto-api-full",
   "version": "1.0.0",
-  "description": "Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`.",
+  "description": "Репозиторий проекта `Mesto`,  фронтенд и бэкенд: авторизация и регистрация пользователей, карточки и пользователи. Бэкенд - в `backend/`, фронтенд - в `frontend/`.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ilya-cherevko/react-mesto-api-full/issues"
   },
-  "homepage": "https://github.com/ilya-cherevko/react-mesto-api-full#readme"
+  "homepage": "https://github.com/ilya-cherevko/react-mesto-api-full#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
 }
