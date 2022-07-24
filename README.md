@@ -5,3 +5,4 @@
 
 Домен: (http://ilya-cherevko.students.nomorepartiesxyz.ru/)
 Публичный ip: 51.250.95.241
+Домен сервера: (https://api.ilya-cherevko.student.nomoredomains.xyz/)
