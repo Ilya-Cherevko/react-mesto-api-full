@@ -67,11 +67,7 @@ function App() {
         }
     }, [isLoggedIn, token])
 
-   // Вход по токену при загрузке страницы
-   // useEffect(() => {
-   //     handleSignInProfileToken()
-   // }, [handleSignInProfileToken])
-
+    // Вход по токену
     useEffect(function handleSignInProfileToken(){
         if (localStorage.getItem('jwt')) {
             const token = JSON.parse(localStorage.getItem('jwt'))
@@ -89,7 +85,7 @@ function App() {
         }
     }, [history])
 
-    // Управление состоянием попапов (открыть)
+    // Управление состоянием попапов открытие
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true)
     }
@@ -116,7 +112,7 @@ function App() {
         setIsConfirmPopupOpen(true)
     }
 
-    // (закрыть)
+    // Управление состоянием попапов закрытие
     function closeAllPopups() {
         setIsEditProfilePopupOpen(false)
         setIsAddPlacePopupOpen(false)
@@ -185,7 +181,7 @@ function App() {
             .finally(() => setIsLoadingButton(false))
     }
 
-    // Управление добовлением карточки
+    // Управление добавлением карточки
     function handleAddPlaceSubmit(data) {
         setIsLoadingButton(true)
 
@@ -244,24 +240,6 @@ function App() {
         setToken('')
         history.push('/sign-in')
     }
-
-    // Вход в профиль по токену
- /*   function handleSignInProfileToken() {
-        if (localStorage.getItem('jwt')) {
-            const token = JSON.parse(localStorage.getItem('jwt'))
-
-            auth.checkToken(token)
-                .then(() => {
-                    setToken(token)
-                    setIsLoggedIn(true)
-                    history.push('/')
-                })
-                .catch(e => {
-                    console.log(e)
-                    handleConfirmLoginClick()
-                })
-        }
-    }*/
 
     return (
         <div className="page">

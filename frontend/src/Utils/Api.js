@@ -42,7 +42,6 @@ export default class Api {
 
     addCard({ name, link }, token) {
         const body = JSON.stringify({ name, link })
-
         return this._fetch({ path: 'cards', method: 'POST', body, token })
     }
 
@@ -52,7 +51,6 @@ export default class Api {
 
     editUserAvatar({ avatar }, token) {
         const body = JSON.stringify({ avatar })
-
         return this._fetch({ path: 'users/me/avatar', method: 'PATCH', body, token })
     }
 

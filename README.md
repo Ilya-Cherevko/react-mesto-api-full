@@ -3,5 +3,5 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Домен: Ilya-cherevko.students.nomoreparties.xyz
+Домен: (http://ilya-cherevko.students.nomorepartiesxyz.ru/)
 Публичный ip: 51.250.95.241
